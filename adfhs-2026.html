@@ -64,7 +64,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,46px);lin
 .care h2{font-family:var(--display);font-size:17px;margin:0;color:var(--caution)}
 .care ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
 
-.toolbar{display:flex;flex-direction:column;gap:12px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:12px;z-index:5;border-bottom:1px solid var(--line)}
+.toolbar{display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding-block:18px;padding-inline:18px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .row .label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:4px}
@@ -72,9 +72,19 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 .jump a{font-size:14px;text-decoration:none;color:var(--muted);padding:2px 0}
 .jump a:hover{color:var(--accent)}
+.search{display:flex;flex-direction:column;gap:6px}
+.search .label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.searchbox{position:relative;max-width:520px}
+.searchbox svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+#q{width:100%;font:inherit;font-size:16px;padding:10px 12px 10px 38px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+#q:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.chip.kw{font-size:13px;padding:4px 10px;background:transparent}
+.chip.kw .n{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:2px}
+.chip.kw[aria-pressed="true"] .n{color:var(--bg)}
+.clear{font:inherit;font-size:14px;background:none;border:0;color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0}
 .count{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
 
-section{display:flex;flex-direction:column;gap:4px;scroll-margin-top:140px}
+section{display:flex;flex-direction:column;gap:4px;scroll-margin-top:16px}
 section h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 section h2 small{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted)}
 .item{display:grid;grid-template-columns:92px minmax(0,1fr);gap:4px 20px;padding:16px 0;border-top:1px solid var(--line)}
@@ -120,14 +130,27 @@ html{scroll-behavior:smooth}
 
 
 <div class="toolbar">
+  <div class="search">
+    <label for="q" class="label">Search</label>
+    <div class="searchbox">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15zm5.3-2.2L21 21"/></svg>
+      <input id="q" type="search" placeholder="Try M42, genomics, AstraZeneca, cancer" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+  <div class="row" role="group" aria-label="Filter by keyword" id="kw">
+    <span class="label">Keywords</span>
+  </div>
   <div class="row" role="group" aria-label="Filter by type">
     <span class="label">Show</span>
-    <button class="chip" type="button" id="f-all" data-f="all" aria-pressed="true">All</button>
-    <button class="chip" type="button" id="f-agreement" data-f="agreement" aria-pressed="false">Agreements</button>
-    <button class="chip" type="button" id="f-launch" data-f="launch" aria-pressed="false">Launches &amp; updates</button>
-    <button class="chip" type="button" id="f-report" data-f="report" aria-pressed="false">Reports</button>
-    <button class="chip" type="button" id="f-programme" data-f="programme" aria-pressed="false">Programmes</button>
+    <button class="chip type" type="button" id="f-all" data-f="all" aria-pressed="true">All</button>
+    <button class="chip type" type="button" id="f-agreement" data-f="agreement" aria-pressed="false">Agreements</button>
+    <button class="chip type" type="button" id="f-launch" data-f="launch" aria-pressed="false">Launches &amp; updates</button>
+    <button class="chip type" type="button" id="f-report" data-f="report" aria-pressed="false">Reports</button>
+    <button class="chip type" type="button" id="f-programme" data-f="programme" aria-pressed="false">Programmes</button>
+  </div>
+  <div class="row">
     <span class="count" id="count" aria-live="polite">36 items</span>
+    <button class="clear" type="button" id="clear" hidden>Clear filters</button>
   </div>
   <nav class="row jump" aria-label="Jump to organisation">
     <span class="label">Jump to</span>
@@ -505,7 +528,7 @@ html{scroll-behavior:smooth}
   </article>
 </section>
 
-<p class="empty" id="none" hidden>No items of this type.</p>
+<p class="empty" id="none" hidden>Nothing matches. Try a different word, or clear the filters.</p>
 </main>
 
 <footer>
@@ -516,26 +539,65 @@ html{scroll-behavior:smooth}
 
 <script>
 (function(){
-  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var KEYWORDS=[
+    ['AI', /\bAI\b|artificial intelligence|multi-agent|drug design engine/],
+    ['Genomics', /genom|genetic|\bDNA\b|biobank/i],
+    ['Wearables', /wearable|WHOOP|\u014cURA|smart ring/i],
+    ['Clinical trials', /clinical trial|\btrials\b|Phase 3/i],
+    ['Cancer', /cancer|oncolog|tumour|CAR-T/i],
+    ['Longevity & prevention', /longevity|prevent|healthy living|healthier/i],
+    ["Women's health & fertility", /women|fertility|IVF|premature birth|reproductive/i],
+    ['Brain health', /Alzheimer|memory|brain|neuro/i],
+    ['Pharma manufacturing', /manufactur|packaging|localis/i],
+    ['Health data', /health data|research environment|data from|records/i],
+    ['Start-ups', /start-up|startup|entrepreneur|Hub71|Challenge/i]
+  ];
   var items=[].slice.call(document.querySelectorAll('.item'));
   var sections=[].slice.call(document.querySelectorAll('main section'));
+  var typeChips=[].slice.call(document.querySelectorAll('.chip.type'));
+  var kwRow=document.getElementById('kw');
+  var q=document.getElementById('q');
   var count=document.getElementById('count');
   var none=document.getElementById('none');
-  function apply(f){
+  var clear=document.getElementById('clear');
+  var state={type:'all',kw:null,text:''};
+  function norm(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+  items.forEach(function(it){
+    var t=it.querySelector('.head').textContent+' '+it.querySelector('.body').textContent;
+    it._text=norm(t+' '+(it.closest('section').querySelector('h2').textContent));
+    it._kw=KEYWORDS.filter(function(k){return k[1].test(t);}).map(function(k){return k[0];});
+  });
+  KEYWORDS.forEach(function(k,i){
+    var n=items.filter(function(it){return it._kw.indexOf(k[0])>-1;}).length;
+    if(!n) return;
+    var b=document.createElement('button');
+    b.type='button';b.className='chip kw';b.id='kw-'+i;b.setAttribute('aria-pressed','false');
+    b.innerHTML='';b.appendChild(document.createTextNode(k[0]+' '));
+    var c=document.createElement('span');c.className='n';c.textContent=n;b.appendChild(c);
+    b.addEventListener('click',function(){state.kw=state.kw===k[0]?null:k[0];apply();});
+    b._k=k[0];kwRow.appendChild(b);
+  });
+  var kwChips=[].slice.call(kwRow.querySelectorAll('.chip'));
+  function apply(){
+    var terms=norm(state.text).split(/\s+/).filter(Boolean);
     var shown=0;
     items.forEach(function(it){
-      var t=it.getAttribute('data-type');
-      var ok=f==='all'||t===f;
+      var ok=(state.type==='all'||it.getAttribute('data-type')===state.type)
+        &&(!state.kw||it._kw.indexOf(state.kw)>-1)
+        &&terms.every(function(w){return it._text.indexOf(w)>-1;});
       it.hidden=!ok; if(ok) shown++;
     });
-    sections.forEach(function(s){
-      s.hidden=!s.querySelector('.item:not([hidden])');
-    });
-    chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-f')===f));});
+    sections.forEach(function(s){s.hidden=!s.querySelector('.item:not([hidden])');});
+    typeChips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-f')===state.type));});
+    kwChips.forEach(function(c){c.setAttribute('aria-pressed',String(c._k===state.kw));});
     count.textContent=shown+(shown===1?' item':' items');
     none.hidden=shown>0;
+    clear.hidden=state.type==='all'&&!state.kw&&!terms.length;
   }
-  chips.forEach(function(c){c.addEventListener('click',function(){apply(c.getAttribute('data-f'));});});
+  typeChips.forEach(function(c){c.addEventListener('click',function(){state.type=c.getAttribute('data-f');apply();});});
+  q.addEventListener('input',function(){state.text=q.value;apply();});
+  clear.addEventListener('click',function(){state={type:'all',kw:null,text:''};q.value='';apply();q.focus();});
+  apply();
 })();
 </script>
 
