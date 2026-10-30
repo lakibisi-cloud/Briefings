@@ -123,9 +123,9 @@ html{scroll-behavior:smooth}
     <div><dt>Forum speakers</dt><dd>130</dd></div>
     <div><dt>Exhibitors</dt><dd>175+</dd></div>
     <div><dt>Countries</dt><dd>~100</dd></div>
-    <div><dt>Items listed</dt><dd>36</dd></div>
+    <div><dt>Items listed</dt><dd>37</dd></div>
   </dl>
-  <p class="byline">Compiled by <a class="li" href="https://www.linkedin.com/in/biseralakinska" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Dr Bisera Lakinska</a> from official releases and press coverage. Last checked 29 October 2026.</p>
+  <p class="byline">Compiled by <a class="li" href="https://www.linkedin.com/in/biseralakinska" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Dr Bisera Lakinska</a> from official releases and press coverage. Last checked 30 October 2026.</p>
 </header>
 
 
@@ -149,7 +149,7 @@ html{scroll-behavior:smooth}
     <button class="chip type" type="button" id="f-programme" data-f="programme" aria-pressed="false">Programmes</button>
   </div>
   <div class="row">
-    <span class="count" id="count" aria-live="polite">36 items</span>
+    <span class="count" id="count" aria-live="polite">37 items</span>
     <button class="clear" type="button" id="clear" hidden>Clear filters</button>
   </div>
   <nav class="row jump" aria-label="Jump to organisation">
@@ -163,6 +163,7 @@ html{scroll-behavior:smooth}
     <a href="#ph">ADSCC &amp; Yas Clinic</a>
     <a href="#burjeel">Burjeel</a>
     <a href="#mediclinic">Mediclinic</a>
+    <a href="#after">After the summit</a>
   </nav>
 </div>
 
@@ -528,6 +529,19 @@ html{scroll-behavior:smooth}
   </article>
 </section>
 
+<section id="after">
+  <h2>After the summit <small>1</small></h2>
+
+  <article class="item" data-type="launch">
+    <div class="date">28 Oct</div>
+    <div class="body">
+      <div class="head"><h3>M42's IROS × Mammoth Biosciences: UAE's first gene-editing trial</h3><span class="tag">Launch</span></div>
+      <p>A clinical trial of MB-111, a one-off infusion that uses Mammoth's compact CRISPR system to switch off the APOC3 gene in the liver. It targets persistent chylomicronemia, a condition of very high blood triglycerides that can cause recurrent pancreatitis. Overseen by DoH, and builds on a June 2026 agreement between DoH, M42 and Mammoth.</p>
+      <div class="src"><a href="https://www.wam.ae/en/article/c2yy60j-iros-mammoth-biosciences-conduct-uae%E2%80%99s-first-trial" target="_blank" rel="noopener">WAM</a><a href="https://en.aletihad.ae/news/uae/4701940/iros--mammoth-biosciences-to-conduct-uae-s-first-trial-of-ge" target="_blank" rel="noopener">Aletihad</a></div>
+    </div>
+  </article>
+</section>
+
 <p class="empty" id="none" hidden>Nothing matches. Try a different word, or clear the filters.</p>
 </main>
 
@@ -541,7 +555,7 @@ html{scroll-behavior:smooth}
 (function(){
   var KEYWORDS=[
     ['AI', /\bAI\b|artificial intelligence|multi-agent|drug design engine/],
-    ['Genomics', /genom|genetic|\bDNA\b|biobank/i],
+    ['Genomics', /genom|genetic|\bgene\b|gene-editing|CRISPR|\bDNA\b|biobank/i],
     ['Wearables', /wearable|WHOOP|\u014cURA|smart ring/i],
     ['Clinical trials', /clinical trial|\btrials\b|Phase 3/i],
     ['Cancer', /cancer|oncolog|tumour|CAR-T/i],
