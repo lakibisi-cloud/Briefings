@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="All 40 announcements from Abu Dhabi Future Health Summit 2026, grouped by theme, with source links. Compiled by Dr Bisera Lakinska.">
+<meta name="description" content="All 40 announcements from Abu Dhabi Future Health Summit 2026, by organisation and theme, with source links. Compiled by Dr Bisera Lakinska.">
 <meta name="author" content="Dr Bisera Lakinska">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Abu Dhabi Future Health Summit 2026: what was announced">
-<meta property="og:description" content="All 40 announcements from Abu Dhabi Future Health Summit 2026, grouped by theme, with source links. Compiled by Dr Bisera Lakinska.">
+<meta property="og:description" content="All 40 announcements from Abu Dhabi Future Health Summit 2026, by organisation and theme, with source links. Compiled by Dr Bisera Lakinska.">
 <meta property="og:image" content="https://lakibisi-cloud.github.io/Briefings/og-adfhs-2026.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -87,8 +87,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 section{display:flex;flex-direction:column;gap:4px;scroll-margin-top:16px}
 section h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 section h2 small{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted)}
-.org{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.intro{margin:0 0 6px;color:var(--muted);max-width:68ch}
+.theme{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.chip.th .n{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:2px}
+.chip.th[aria-pressed="true"] .n{color:var(--bg)}
 .item{display:grid;grid-template-columns:92px minmax(0,1fr);gap:4px 20px;padding:16px 0;border-top:1px solid var(--line)}
 .date{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
 .body{display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -119,7 +120,7 @@ html{scroll-behavior:smooth}
 <header>
   <span class="eyebrow">ADNEC Centre Abu Dhabi · 20 to 22 October 2026</span>
   <h1>Abu Dhabi Future Health Summit 2026: what was announced</h1>
-  <p class="lede">Every agreement, launch and report I could verify from the three days, grouped by theme, with a link to the original release or coverage for each one.</p>
+  <p class="lede">Every agreement, launch and report I could verify from the three days, grouped by organisation, with a link to the original release or coverage for each one.</p>
   <dl class="facts">
     <div><dt>Theme</dt><dd>To Sense is to Predict</dd></div>
     <div><dt>Forum speakers</dt><dd>130</dd></div>
@@ -139,6 +140,17 @@ html{scroll-behavior:smooth}
       <input id="q" type="search" placeholder="Try M42, genomics, AstraZeneca, cancer" autocomplete="off" spellcheck="false">
     </div>
   </div>
+  <div class="row" role="group" aria-label="Filter by theme" id="th">
+    <span class="label">Themes</span>
+    <button class="chip th" type="button" id="th-all" data-th="all" aria-pressed="true">All</button>
+    <button class="chip th" type="button" id="th-0" data-th="th0" aria-pressed="false">Clinical trials &amp; new therapies <span class="n">10</span></button>
+    <button class="chip th" type="button" id="th-1" data-th="th1" aria-pressed="false">Health data, genomics &amp; prediction <span class="n">6</span></button>
+    <button class="chip th" type="button" id="th-2" data-th="th2" aria-pressed="false">Prevention, wearables &amp; healthy living <span class="n">6</span></button>
+    <button class="chip th" type="button" id="th-3" data-th="th3" aria-pressed="false">Specialist care &amp; expansion <span class="n">5</span></button>
+    <button class="chip th" type="button" id="th-4" data-th="th4" aria-pressed="false">Pharma manufacturing &amp; investment <span class="n">5</span></button>
+    <button class="chip th" type="button" id="th-5" data-th="th5" aria-pressed="false">AI in care delivery <span class="n">4</span></button>
+    <button class="chip th" type="button" id="th-6" data-th="th6" aria-pressed="false">Start-ups &amp; challenges <span class="n">4</span></button>
+  </div>
   <div class="row" role="group" aria-label="Filter by keyword" id="kw">
     <span class="label">Keywords</span>
   </div>
@@ -154,477 +166,470 @@ html{scroll-behavior:smooth}
     <span class="count" id="count" aria-live="polite">41 items</span>
     <button class="clear" type="button" id="clear" hidden>Clear filters</button>
   </div>
-  <nav class="row jump" aria-label="Jump to theme">
+  <nav class="row jump" aria-label="Jump to organisation">
     <span class="label">Jump to</span>
-    <a href="#trials">Clinical trials and new therapies (10)</a>
-    <a href="#data">Health data, genomics and prediction (6)</a>
-    <a href="#prevention">Prevention, wearables and healthy living (6)</a>
-    <a href="#specialist">Specialist care and regional expansion (5)</a>
-    <a href="#pharma">Pharma manufacturing and life sciences investment (5)</a>
-    <a href="#ai">AI in care delivery (4)</a>
-    <a href="#startups">Start-ups and innovation challenges (4)</a>
-    <a href="#after">After the summit (1)</a>
+    <a href="#gov">Government</a>
+    <a href="#fh">Future Health</a>
+    <a href="#m42">M42</a>
+    <a href="#mub">Mubadala</a>
+    <a href="#ind">Pharma &amp; medtech</a>
+    <a href="#ihlad">IHLAD</a>
+    <a href="#ph">ADSCC &amp; Yas Clinic</a>
+    <a href="#burjeel">Burjeel</a>
+    <a href="#mediclinic">Mediclinic</a>
+    <a href="#after">After the summit</a>
   </nav>
 </div>
 
-<main style="display:flex;flex-direction:column;gap:44px">
+<main style="display:flex;flex-direction:column;gap:40px">
 
-<section id="trials">
-  <h2>Clinical trials and new therapies <small>10</small></h2>
-  <p class="intro">Bringing global trials to Abu Dhabi and new treatments, from cell and gene therapy to brain-computer interfaces, into clinical use.</p>
+<section id="gov">
+  <h2>Department of Health – Abu Dhabi &amp; federal <small>10</small></h2>
 
-  <article class="item" data-type="launch">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
-      <div class="head"><h3>DoH × Novartis: Abu Dhabi Clinical Trials Hub</h3><span class="tag">Launch</span></div>
-      <p>A hub connecting local research sites and eligible patients with Novartis's global Phase 3 trials in neuroscience, cardiovascular disease, oncology and immunology. Builds on a DoH and Novartis MoU signed in June 2024.</p>
-      <div class="src"><a href="https://healthcaremea.com/2026/10/28/doh-collaborates-with-novartis-to-launch-clinical-trials-hub-to-expand-global-phase-3-research" target="_blank" rel="noopener">Healthcare MEA</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th1" data-type="launch">
     <div class="date">21 Oct</div>
     <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
-      <div class="head"><h3>DoH × Cleveland Clinic Abu Dhabi × AstraZeneca</h3><span class="tag">Agreement</span></div>
-      <p>Makes Abu Dhabi a priority location in AstraZeneca's clinical trial network. Explores the feasibility of up to 30 trials by 2030 in cardiovascular, renal and metabolic disease, with an estimated AED180 million (US$50 million) research investment. The first six trials are expected at CCAD by the end of 2026.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/in-the-presence-of-theyab-bin-mohamed-bin-zayed-department-of-health-abu-dhabi-signs-agreements-to-advance-research-in-life-sciences-personalised-preventive-health-and-ai-drug-discovery/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">AstraZeneca</span>
-      <div class="head"><h3>AstraZeneca × Oracle</h3><span class="tag">Agreement</span></div>
-      <p>An AI partnership for clinical trials and care pathways. The first programme runs in Abu Dhabi with M42 and focuses on finding patients with uncontrolled hypertension and matching eligible ones to trials.</p>
-      <div class="src"><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
-      <div class="head"><h3>DoH × NeOnc Technologies</h3><span class="tag">Agreement</span></div>
-      <p>Two-year MoU on brain cancer and other central nervous system tumours: scientific exchange, specialist training, real-world evidence, trial design and neuro-oncology imaging, and exploring clinical research on NeOnc's programmes in Abu Dhabi.</p>
-      <div class="src"><a href="https://finance.yahoo.com/healthcare/articles/neonc-technologies-department-health-abu-120000684.html" target="_blank" rel="noopener">NeOnc release via Yahoo Finance</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Precision Neuroscience</span>
-      <div class="head"><h3>Precision Neuroscience × Cleveland Clinic Abu Dhabi</h3><span class="tag">Agreement</span></div>
-      <p>Two-year MoU, supported by DoH, to evaluate Precision's Layer 7 brain-computer interface in clinical research, starting with severe paralysis from brainstem stroke, spinal cord injury or ALS. Cleveland Clinic Abu Dhabi becomes the company's first research site outside the US.</p>
-      <div class="src"><a href="https://biospace.com/press-releases/precision-neuroscience-expands-clinical-network-beyond-the-u-s-with-first-international-site-in-abu-dhabi" target="_blank" rel="noopener">BioSpace</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="report">
-    <div class="date">20 Oct</div>
-    <div class="body">
-      <span class="org">Future Health</span>
-      <div class="head"><h3>The Future of Therapeutics</h3><span class="tag">Report</span></div>
-      <p>White paper with Strategy&amp; Middle East. Four priorities for connecting Abu Dhabi's genomics, health data, clinical research and regulation so new therapies reach patients.</p>
-      <div class="src"><a href="https://futurehealthinitiative.ae/future-health-sets-out-four-part-abu-dhabi-blueprint-for-translating-next-generation-therapeutics-into-patient-care/" target="_blank" rel="noopener">Future Health release</a><a href="https://futurehealthinitiative.ae/the-future-of-therapeutics-how-abu-dhabi-can-help-translate-the-next-generation-of-science-into-patient-care-a-whitepaper-by-future-health-a-global-initiative-by-abu-dhabi-developed-with-kn/" target="_blank" rel="noopener">White paper page</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Abu Dhabi Stem Cells Center</span>
-      <div class="head"><h3>Abu Dhabi Stem Cells Center × Miltenyi</h3><span class="tag">Agreement</span></div>
-      <p>Scientific and technical cooperation on local CAR-T manufacturing. ADSCC contributes its GMP cell therapy infrastructure; Miltenyi supports with viral vector and anti-CD19 CAR technology.</p>
-      <div class="src"><a href="https://www.healthcaremea.com/2026/10/26/adscc-partners-with-miltenyi-to-advance-local-car-t-therapy-manufacturing-in-uae/" target="_blank" rel="noopener">Healthcare MEA</a><a href="https://www.voiceofemirates.com/en/emirates/2026/10/23/strengthening-research-and-technical-partnerships-the-abu-dhabi-summit-for-the-future-of-health-2026-charts-new-paths-for-international-health-cooperation/" target="_blank" rel="noopener">WAM summary</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="launch">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Yas Clinic</span>
-      <div class="head"><h3>Yas Clinic Khalifa City × ADSCC: CRISPR gene therapy</h3><span class="tag">Launch</span></div>
-      <p>Yas Clinic Khalifa City announced that CRISPR-Cas9 gene-editing therapy is available at the clinic, in collaboration with Abu Dhabi Stem Cells Center.</p>
-      <div class="src"><a href="https://gulfnews.com/uae/health/abu-dhabi-gathers-global-leaders-to-shape-the-future-of-healthcare-2-1.500718085" target="_blank" rel="noopener">Gulf News</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Yas Clinic</span>
-      <div class="head"><h3>Yas Clinic Khalifa City × Reem Hospital</h3><span class="tag">Agreement</span></div>
-      <p>MoU on orthopaedics, neuroscience and dermatology, with a focus on regenerative medicine and cell therapy. Covers knowledge exchange, joint case reviews, training and coordinated patient pathways, with any cell therapy work subject to regulatory approval.</p>
-      <div class="src"><a href="https://www.dubaistandard.com/reem-hospital-and-yas-clinic-partner-to-advance-regenerative-medicine-in-abu-dhabi/" target="_blank" rel="noopener">Dubai Standard</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Burjeel Holdings</span>
-      <div class="head"><h3>Oncology, AI and research partnerships</h3><span class="tag">Agreement</span></div>
-      <p>Avatrial and Avesta Bio on oncology trials and therapies; HealthStay on an AI system for referrals and international patient intake at Burjeel Medical City; plus agreements with South Korea's ARPI and NYU Abu Dhabi.</p>
-      <div class="src"><a href="https://english.uaevartha.com/burjeel-holdings-unveils-mission-ready-healthcare-model-at-abu-dhabi-future-health-summit/" target="_blank" rel="noopener">UAE Vartha</a><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
-    </div>
-  </article>
-
-</section>
-
-<section id="data">
-  <h2>Health data, genomics and prediction <small>6</small></h2>
-  <p class="intro">Using population health and genomic data for research, drug discovery and earlier diagnosis.</p>
-
-  <article class="item" data-type="launch">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
+      <span class="theme">Health data, genomics &amp; prediction</span>
       <div class="head"><h3>Abu Dhabi Trusted Research Environment</h3><span class="tag">Launch</span></div>
       <p>A secure, DoH-governed environment where approved researchers and companies can analyse genomic and health data without the data leaving it. Covers data from around 660,000 Emirati Genome Programme participants, with DoH holding the encryption keys. Several summit agreements, including Isomorphic Labs, run inside it.</p>
       <div class="src"><a href="https://www.doh.gov.ae/en/news/doh-launches-trusted-research-environment-to-support-genomic-and-health-research" target="_blank" rel="noopener">DoH news</a><a href="https://healthpolicy-watch.news/abu-dhabi-wants-health-systems-to-see-disease-coming/" target="_blank" rel="noopener">Health Policy Watch</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th1" data-type="agreement">
     <div class="date">21 Oct</div>
     <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
+      <span class="theme">Health data, genomics &amp; prediction</span>
       <div class="head"><h3>DoH × Isomorphic Labs</h3><span class="tag">Agreement</span></div>
       <p>Collaboration on AI-enabled drug discovery. Sets a 24-month pre-clinical research roadmap for selected projects, with the research carried out inside Abu Dhabi's Trusted Research Environment.</p>
       <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/in-the-presence-of-theyab-bin-mohamed-bin-zayed-department-of-health-abu-dhabi-signs-agreements-to-advance-research-in-life-sciences-personalised-preventive-health-and-ai-drug-discovery/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Abu Dhabi Biobank</span>
-      <div class="head"><h3>Abu Dhabi Biobank × AstraZeneca</h3><span class="tag">Agreement</span></div>
-      <p>The Biobank, a joint DoH and M42 initiative, will evaluate AstraZeneca's MILTON AI platform for predicting type 2 diabetes, cardiovascular disease and rare conditions. It draws on more than five million samples, Emirati Genome Program data and clinical records, and tests how well the model works in Middle Eastern populations.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/abu-dhabi-biobank-partners-with-astrazeneca-to-advance-predictive-healthcare/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="launch">
-    <div class="date">20 Oct</div>
-    <div class="body">
-      <span class="org">UAE Ministry of Health and Prevention</span>
-      <div class="head"><h3>National genome programme update</h3><span class="tag">Update</span></div>
-      <p>In the opening address, the UAE Minister of Health and Prevention said close to 920,000 people have joined the national genome programme, and personalised health reports are being prepared for those who consented.</p>
-      <div class="src"><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="report">
-    <div class="date">19 Oct</div>
-    <div class="body">
-      <span class="org">Future Health</span>
-      <div class="head"><h3>The Future of Genomics</h3><span class="tag">Report</span></div>
-      <p>White paper with EY on rare disease, precision therapeutics and a proposed "Genomics Oasis" built around Abu Dhabi's population-scale genomics.</p>
-      <div class="src"><a href="https://futurehealthinitiative.ae/the-future-of-genomics-precision-therapeutics-value-creation-and-a-discovery-engine-for-rare-diseases-and-beyond-a-whitepaper-by-future-health-a-global-initiative-by-abu-dhabi-developed-w/" target="_blank" rel="noopener">White paper page</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">M42</span>
-      <div class="head"><h3>M42 × Inocras</h3><span class="tag">Agreement</span></div>
-      <p>A pilot at Cleveland Clinic Abu Dhabi of blood tests that look for tumour DNA to detect cancer recurrence earlier, starting with higher-risk breast cancer patients.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-and-inocras-partner-to-advance-earlier-detection-of-cancer-recurrence-in-the-uae/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
-    </div>
-  </article>
-
-</section>
-
-<section id="prevention">
-  <h2>Prevention, wearables and healthy living <small>6</small></h2>
-  <p class="intro">Continuous data from wearables, behavioural science and healthy longevity.</p>
-
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th2" data-type="agreement">
     <div class="date">21 Oct</div>
     <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
+      <span class="theme">Prevention, wearables &amp; healthy living</span>
       <div class="head"><h3>DoH × WHOOP</h3><span class="tag">Agreement</span></div>
       <p>A 24-month research programme on heart and metabolic health. The first study follows adults with obesity and high blood pressure for six months, tracking weight, waist, blood pressure, cholesterol, blood sugar and sleep alongside WHOOP coaching.</p>
       <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/in-the-presence-of-theyab-bin-mohamed-bin-zayed-department-of-health-abu-dhabi-signs-agreements-to-advance-research-in-life-sciences-personalised-preventive-health-and-ai-drug-discovery/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th0" data-type="agreement">
     <div class="date">21 Oct</div>
     <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>DoH × Cleveland Clinic Abu Dhabi × AstraZeneca</h3><span class="tag">Agreement</span></div>
+      <p>Makes Abu Dhabi a priority location in AstraZeneca's clinical trial network. Explores the feasibility of up to 30 trials by 2030 in cardiovascular, renal and metabolic disease, with an estimated AED180 million (US$50 million) research investment. The first six trials are expected at CCAD by the end of 2026.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/in-the-presence-of-theyab-bin-mohamed-bin-zayed-department-of-health-abu-dhabi-signs-agreements-to-advance-research-in-life-sciences-personalised-preventive-health-and-ai-drug-discovery/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th1" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Health data, genomics &amp; prediction</span>
+      <div class="head"><h3>Abu Dhabi Biobank × AstraZeneca</h3><span class="tag">Agreement</span></div>
+      <p>The Biobank, a joint DoH and M42 initiative, will evaluate AstraZeneca's MILTON AI platform for predicting type 2 diabetes, cardiovascular disease and rare conditions. It draws on more than five million samples, Emirati Genome Program data and clinical records, and tests how well the model works in Middle Eastern populations.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/abu-dhabi-biobank-partners-with-astrazeneca-to-advance-predictive-healthcare/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th0" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>DoH × NeOnc Technologies</h3><span class="tag">Agreement</span></div>
+      <p>Two-year MoU on brain cancer and other central nervous system tumours: scientific exchange, specialist training, real-world evidence, trial design and neuro-oncology imaging, and exploring clinical research on NeOnc's programmes in Abu Dhabi.</p>
+      <div class="src"><a href="https://finance.yahoo.com/healthcare/articles/neonc-technologies-department-health-abu-120000684.html" target="_blank" rel="noopener">NeOnc release via Yahoo Finance</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th2" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Prevention, wearables &amp; healthy living</span>
       <div class="head"><h3>DoH × ŌURA: Project Cradle</h3><span class="tag">Agreement</span></div>
       <p>A 24-month study using the ŌURA smart ring to look for early warning signs of premature birth. Starts at Corniche Hospital and Mediclinic Airport Road, with results expected in 2028.</p>
       <div class="src"><a href="https://www.khaleejtimes.com/uae/smart-ring-warn-doctors-premature-birth-abu-dhabi-new-study" target="_blank" rel="noopener">Khaleej Times</a><a href="https://fastcompanyme.com/news/new-study-in-abu-dhabi-explores-if-smart-rings-biometric-data-can-predict-premature-birth-risks/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="report">
-    <div class="date">20 Oct</div>
+  <article class="item" data-theme="th0" data-type="launch">
+    <div class="date">Summit</div>
     <div class="body">
-      <span class="org">Future Health</span>
-      <div class="head"><h3>Embedding Wearables into the Future of Health and Wellbeing</h3><span class="tag">Report</span></div>
-      <p>White paper with Deloitte. A five-pillar framework for bringing wearable data into preventive and population health, and a three-phase roadmap from regulation and pilots to routine clinical use.</p>
-      <div class="src"><a href="https://futurehealthinitiative.ae/future-health-whitepaper-sets-out-five-pillar-framework-to-embed-wearables-into-preventive-healthcare-2/" target="_blank" rel="noopener">Future Health release</a><a href="https://futurehealthinitiative.ae/embedding-wearables-into-the-future-of-health-and-wellbeing-a-framework-for-adoption-and-integration-into-abu-dhabis-wider-health-infrastructure-a-whitepaper-by-future-health-a-gl/" target="_blank" rel="noopener">White paper page</a></div>
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>DoH × Novartis: Abu Dhabi Clinical Trials Hub</h3><span class="tag">Launch</span></div>
+      <p>A hub connecting local research sites and eligible patients with Novartis's global Phase 3 trials in neuroscience, cardiovascular disease, oncology and immunology. Builds on a DoH and Novartis MoU signed in June 2024.</p>
+      <div class="src"><a href="https://healthcaremea.com/2026/10/28/doh-collaborates-with-novartis-to-launch-clinical-trials-hub-to-expand-global-phase-3-research" target="_blank" rel="noopener">Healthcare MEA</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th2" data-type="agreement">
     <div class="date">Summit</div>
     <div class="body">
-      <span class="org">Department of Health – Abu Dhabi</span>
+      <span class="theme">Prevention, wearables &amp; healthy living</span>
       <div class="head"><h3>Healthy Living × Behavioral Science Group × BIT by Nesta</h3><span class="tag">Agreement</span></div>
       <p>A collaboration between DoH's Healthy Living programme, the Behavioral Science Group and BIT by Nesta (formerly the Behavioural Insights Team) to apply behavioural science so that healthier choices are easier to make in Abu Dhabi. Published with an accompanying report.</p>
       <div class="src"><a href="https://www.doh.gov.ae/en/news/healthy-living-the-behavioral-science-group-and-bit-by-nesta" target="_blank" rel="noopener">DoH news</a><a href="http://www.arabherald.com/news/279394725/healthy-living-behavioral-science-group-and-bit-by-nesta-announce-collaboration-to-make-healthier-choices-easier-in-abu-dhabi" target="_blank" rel="noopener">Arab Herald</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="report">
-    <div class="date">23 Sep</div>
+  <article class="item" data-theme="th1" data-type="launch">
+    <div class="date">20 Oct</div>
     <div class="body">
-      <span class="org">Future Health</span>
-      <div class="head"><h3>The Future of Healthy Living: A $16.4 Trillion Opportunity</h3><span class="tag">Report</span></div>
-      <p>White paper with the McKinsey Health Institute and DoH's Healthy Living programme, released on the sidelines of UNGA ahead of the summit. Estimates that removing behavioural, metabolic and environmental risk factors could add US$16.4 trillion to annual global GDP in 2050 (about 9%), avert 1.5 billion DALYs (about 47% of projected disease burden) and add up to 12 years of healthy life expectancy. Notes that 19 of 23 major drivers of health sit largely outside the formal healthcare system.</p>
-      <div class="src"><a href="https://www.wam.ae/en/article/c2e4097-future-health-whitepaper-outlines-abu-dhabi" target="_blank" rel="noopener">WAM</a><a href="https://futurehealthinitiative.ae/the-future-of-healthy-living-a-16-4-trillion-opportunity/" target="_blank" rel="noopener">White paper page</a></div>
+      <span class="theme">Health data, genomics &amp; prediction</span>
+      <div class="head"><h3>National genome programme update</h3><span class="tag">Update</span></div>
+      <p>In the opening address, the UAE Minister of Health and Prevention said close to 920,000 people have joined the national genome programme, and personalised health reports are being prepared for those who consented.</p>
+      <div class="src"><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
     </div>
   </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">IHLAD</span>
-      <div class="head"><h3>IHLAD × UAE Integrative Medicine Council</h3><span class="tag">Agreement</span></div>
-      <p>MoU on research into the safety and effectiveness of integrative medicine, including selected Emirati traditional practices. IHLAD also ran a three-day scientific programme on healthy longevity medicine, including the existing DoH guidelines for Healthy Longevity Medicine Centres.</p>
-      <div class="src"><a href="https://mena.entrepreneur.com/business-news/ihlad-convenes-global-experts-on-healthy-longevity-medicine-at-abu-dhabi-future-health-summit-2026" target="_blank" rel="noopener">Entrepreneur Middle East</a><a href="https://zawya.com/en/press-release/companies-news/ihlad-unites-global-experts-to-advanceevidence-based-healthy-longevity-medicine-at-abu-dhabi-future-health-summit-2026-1848832" target="_blank" rel="noopener">Zawya</a></div>
-    </div>
-  </article>
-
 </section>
 
-<section id="specialist">
-  <h2>Specialist care and regional expansion <small>5</small></h2>
-  <p class="intro">New specialist services in the UAE and growth into Bahrain, Africa and the wider Global South.</p>
+<section id="fh">
+  <h2>Future Health – A Global Initiative by Abu Dhabi <small>8</small></h2>
 
-  <article class="item" data-type="agreement">
-    <div class="date">21 Oct</div>
+  <article class="item" data-theme="th2" data-type="report">
+    <div class="date">20 Oct</div>
     <div class="body">
-      <span class="org">M42</span>
-      <div class="head"><h3>M42 × Re:Cognition Health</h3><span class="tag">Agreement</span></div>
-      <p>Memory and brain health services at Mubadala Health Dubai, then Tawam Molecular Imaging Centre in Al Ain. Covers cognitive impairment and Alzheimer's, including disease-modifying therapy for eligible patients, with ADHD and autism assessment added in phases. Re:Cognition's first clinical service in the region.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/mubadala-health-dubai-and-tawam-molecular-imaging-centre-partner-with-re-cognition-health-to-expand-access-to-specialist-brain-and-memory-health-services-in-uae/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
+      <span class="theme">Prevention, wearables &amp; healthy living</span>
+      <div class="head"><h3>Embedding Wearables into the Future of Health and Wellbeing</h3><span class="tag">Report</span></div>
+      <p>White paper with Deloitte. A five-pillar framework for bringing wearable data into preventive and population health, and a three-phase roadmap from regulation and pilots to routine clinical use.</p>
+      <div class="src"><a href="https://futurehealthinitiative.ae/future-health-whitepaper-sets-out-five-pillar-framework-to-embed-wearables-into-preventive-healthcare-2/" target="_blank" rel="noopener">Future Health release</a><a href="https://futurehealthinitiative.ae/embedding-wearables-into-the-future-of-health-and-wellbeing-a-framework-for-adoption-and-integration-into-abu-dhabis-wider-health-infrastructure-a-whitepaper-by-future-health-a-gl/" target="_blank" rel="noopener">White paper page</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="report">
+  <article class="item" data-theme="th0" data-type="report">
+    <div class="date">20 Oct</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>The Future of Therapeutics</h3><span class="tag">Report</span></div>
+      <p>White paper with Strategy&amp; Middle East. Four priorities for connecting Abu Dhabi's genomics, health data, clinical research and regulation so new therapies reach patients.</p>
+      <div class="src"><a href="https://futurehealthinitiative.ae/future-health-sets-out-four-part-abu-dhabi-blueprint-for-translating-next-generation-therapeutics-into-patient-care/" target="_blank" rel="noopener">Future Health release</a><a href="https://futurehealthinitiative.ae/the-future-of-therapeutics-how-abu-dhabi-can-help-translate-the-next-generation-of-science-into-patient-care-a-whitepaper-by-future-health-a-global-initiative-by-abu-dhabi-developed-with-kn/" target="_blank" rel="noopener">White paper page</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th3" data-type="report">
     <div class="date">22 Oct</div>
     <div class="body">
-      <span class="org">Future Health</span>
+      <span class="theme">Specialist care &amp; expansion</span>
       <div class="head"><h3>The Future of Fertility</h3><span class="tag">Report</span></div>
       <p>White paper with PwC Middle East. Sets out an integrated model for reproductive medicine covering prevention, genetics, treatment, patient experience and research. Reports an emirate-wide IVF success rate of 59% in 2026.</p>
       <div class="src"><a href="https://futurehealthinitiative.ae/new-future-health-whitepaper-sets-out-abu-dhabi-blueprint-for-integrated-reproductive-medicine/" target="_blank" rel="noopener">Future Health release</a><a href="https://futurehealthinitiative.ae/the-future-of-fertility-from-ivf-to-integrated-reproductive-medicine-a-white-paper-by-future-health-a-global-initiative-by-abu-dhabi-developed-in-collaboration-with-knowledge-contributor/" target="_blank" rel="noopener">White paper page</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
-    <div class="date">20 Oct</div>
+  <article class="item" data-theme="th1" data-type="report">
+    <div class="date">19 Oct</div>
     <div class="body">
-      <span class="org">M42</span>
-      <div class="head"><h3>Mubadala Health Bahrain</h3><span class="tag">Agreement</span></div>
-      <p>Plans for a new multidisciplinary facility in Bahrain Bay, with an agreement signed with Bahrain's Future Generations Reserve Fund to secure the site.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-expands-in-bahrain-with-new-mubadala-health-facility-in-bahrain-bay/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
+      <span class="theme">Health data, genomics &amp; prediction</span>
+      <div class="head"><h3>The Future of Genomics</h3><span class="tag">Report</span></div>
+      <p>White paper with EY on rare disease, precision therapeutics and a proposed "Genomics Oasis" built around Abu Dhabi's population-scale genomics.</p>
+      <div class="src"><a href="https://futurehealthinitiative.ae/the-future-of-genomics-precision-therapeutics-value-creation-and-a-discovery-engine-for-rare-diseases-and-beyond-a-whitepaper-by-future-health-a-global-initiative-by-abu-dhabi-developed-w/" target="_blank" rel="noopener">White paper page</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th2" data-type="report">
+    <div class="date">23 Sep</div>
+    <div class="body">
+      <span class="theme">Prevention, wearables &amp; healthy living</span>
+      <div class="head"><h3>The Future of Healthy Living: A $16.4 Trillion Opportunity</h3><span class="tag">Report</span></div>
+      <p>White paper with the McKinsey Health Institute and DoH's Healthy Living programme, released on the sidelines of UNGA ahead of the summit. Estimates that removing behavioural, metabolic and environmental risk factors could add US$16.4 trillion to annual global GDP in 2050 (about 9%), avert 1.5 billion DALYs (about 47% of projected disease burden) and add up to 12 years of healthy life expectancy. Notes that 19 of 23 major drivers of health sit largely outside the formal healthcare system.</p>
+      <div class="src"><a href="https://www.wam.ae/en/article/c2e4097-future-health-whitepaper-outlines-abu-dhabi" target="_blank" rel="noopener">WAM</a><a href="https://futurehealthinitiative.ae/the-future-of-healthy-living-a-16-4-trillion-opportunity/" target="_blank" rel="noopener">White paper page</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th6" data-type="programme">
     <div class="date">21 Oct</div>
     <div class="body">
-      <span class="org">M42</span>
-      <div class="head"><h3>M42 × Siemens Healthineers</h3><span class="tag">Agreement</span></div>
-      <p>MoU on prevention, screening and earlier detection across the Global South, with a focus on Africa.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-and-siemens-healthineers-partner-to-advance-healthcare-transformation-across-the-global-south/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://www.zawya.com/en/business/m42-siemens-healthineers-partner-to-advance-healthcare-transformation-across-global-south-1848890" target="_blank" rel="noopener">Zawya</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Burjeel Holdings</span>
-      <div class="head"><h3>Burjeel × e&amp;</h3><span class="tag">Agreement</span></div>
-      <p>MoU giving e&amp; employees and their families priority access to specialist care and preventive health programmes across Burjeel's network.</p>
-      <div class="src"><a href="https://www.zawya.com/en/press-release/companies-news/burjeel-holdings-and-etisalat-join-hands-to-enhance-healthcare-access-for-employees-and-families-across-uae-1817275" target="_blank" rel="noopener">Zawya</a></div>
-    </div>
-  </article>
-
-</section>
-
-<section id="pharma">
-  <h2>Pharma manufacturing and life sciences investment <small>5</small></h2>
-  <p class="intro">Making and packaging medicines locally and funding life sciences research.</p>
-
-  <article class="item" data-type="agreement">
-    <div class="date">20 Oct</div>
-    <div class="body">
-      <span class="org">Mubadala Bio</span>
-      <div class="head"><h3>Mubadala Bio × Eli Lilly</h3><span class="tag">Agreement</span></div>
-      <p>Local packaging and logistics for Lilly's GLP-1 medicines from a 125,000 sqm site in KEZAD. Phased in subject to regulatory and quality approvals. No financial terms or timeline disclosed.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/mubadala-bio-and-lilly-announce-landmark-agreement-to-advance-pharmaceutical-contract-manufacturing-in-abu-dhabi/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://mena.entrepreneur.com/business-news/mubadala-bio-partners-with-us1-1-trillion-pharma-giant-eli-lilly-to-package-weight-loss-drugs-in-abu-dhabi" target="_blank" rel="noopener">Entrepreneur Middle East</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Mubadala Bio</span>
-      <div class="head"><h3>Mubadala Bio × Marcyrl Group</h3><span class="tag">Agreement</span></div>
-      <p>Localisation of women's health, fertility and respiratory medicines in the UAE.</p>
-      <div class="src"><a href="https://www.healthcaremea.com/2026/10/25/mubadala-bio-partners-with-marcyrl-to-strengthen-uae-pharmaceutical-manufacturing/" target="_blank" rel="noopener">Healthcare MEA</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">ADCAN Pharma</span>
-      <div class="head"><h3>ADCAN Pharma × MS Pharma</h3><span class="tag">Agreement</span></div>
-      <p>Local manufacturing, packaging, testing and batch release of biosimilars, injectables and oral medicines in the UAE, across oncology, immunology and other areas. ADCAN also plans a UAE laboratory for full quality testing of monoclonal antibodies.</p>
-      <div class="src"><a href="https://enterpriseam.com/uae/2026/10/22/healthcare-moves-from-summit-habib-al-mulla-goes-to-shanghai-no-rest-for-adias-india-ipo-drive-invictus-offloads-merec-stake/" target="_blank" rel="noopener">Enterprise AM</a><a href="https://gulfnews.com/uae/health/uae-to-expand-local-production-of-medicines-for-cancer-and-chronic-diseases-1.500717699" target="_blank" rel="noopener">Gulf News</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="programme">
-    <div class="date">Summit</div>
-    <div class="body">
-      <span class="org">Mubadala</span>
-      <div class="head"><h3>Mubadala × Khalifa University: Life Sciences Innovation Program</h3><span class="tag">Programme</span></div>
-      <p>Mubadala and Khalifa University Enterprises Company will jointly fund research projects in cardiometabolic, CNS, oncology, musculoskeletal, and men's and women's health, with Mubadala Bio supporting the route to products.</p>
-      <div class="src"><a href="https://mededgemea.com/uae-launches-life-sciences-programme-to-advance-healthcare-research-and-innovation/" target="_blank" rel="noopener">MedEdge MEA</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="agreement">
-    <div class="date">20 Oct</div>
-    <div class="body">
-      <span class="org">Mubadala Bio</span>
-      <div class="head"><h3>Ministry of Defence × Mubadala Bio</h3><span class="tag">Agreement</span></div>
-      <p>Sponsorship of the 46th ICMM World Congress of Military Medicine, at ADNEC from 9 to 13 November 2026.</p>
-      <div class="src"><a href="http://www.middleeaststar.com/news/279387814/ministry-of-defence-signs-agreement-with-mubadala-bio-for-military-medicine-congress" target="_blank" rel="noopener">WAM via Middle East Star</a></div>
-    </div>
-  </article>
-
-</section>
-
-<section id="ai">
-  <h2>AI in care delivery <small>4</small></h2>
-  <p class="intro">AI that supports clinicians in the consulting room, the operating theatre and emergency care.</p>
-
-  <article class="item" data-type="launch">
-    <div class="date">22 Oct</div>
-    <div class="body">
-      <span class="org">M42</span>
-      <div class="head"><h3>Ossi clinical AI platform</h3><span class="tag">Launch</span></div>
-      <p>A multi-agent AI platform built with Microsoft that documents consultations, summarises records, retrieves clinical information and supports coding. Live in seven M42 facilities in the UAE and Bahrain.</p>
-      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-launches-ossi-an-ai-platform-transforming-clinician-patient-connections/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://en.aletihad.ae/amp/news/uae/4700552/m42-launches-ai-powered-ossi-platform-at-future-health-summi" target="_blank" rel="noopener">Aletihad</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="launch">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Mediclinic Middle East</span>
-      <div class="head"><h3>Mediclinic Middle East × Commure</h3><span class="tag">Update</span></div>
-      <p>Ambient AI that turns clinician and patient conversations into structured notes for doctors to review, in English and Arabic. Being introduced at Mediclinic Parkview and Mediclinic City Hospital in Dubai, building on a project with more than 60 doctors.</p>
-      <div class="src"><a href="https://www.healthcaremea.com/2026/10/26/mediclinic-middle-east-partners-with-commure-to-advance-ambient-ai-in-uae-clinical-care/" target="_blank" rel="noopener">Healthcare MEA</a><a href="https://www.tahawultech.com/channel/mediclinic-middle-east-and-commure-collaborate-to-advance-ai-enabled-clinical-care-in-the-uae/" target="_blank" rel="noopener">Tahawul Tech</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="launch">
-    <div class="date">20 Oct</div>
-    <div class="body">
-      <span class="org">Johnson &amp; Johnson</span>
-      <div class="head"><h3>Johnson &amp; Johnson MedTech</h3><span class="tag">Update</span></div>
-      <p>Progress update on standardising Abu Dhabi operating rooms on its Polyphonic digital surgery platform with DoH. Announced an intent to collaborate with Hub71 on surgical start-ups, and released The Future of Digital Surgery report.</p>
-      <div class="src"><a href="https://www.biospace.com/press-releases/johnson-johnson-to-showcase-the-future-of-surgical-intelligence-at-abu-dhabi-future-health-summit-2026" target="_blank" rel="noopener">Business Wire via BioSpace</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="launch">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Burjeel Holdings</span>
-      <div class="head"><h3>Mission-ready healthcare model</h3><span class="tag">Launch</span></div>
-      <p>An emergency and acute care network linking field trauma care, air evacuation, AI diagnostics and tertiary care, run through its BEACON operations network and group companies.</p>
-      <div class="src"><a href="https://english.uaevartha.com/burjeel-holdings-unveils-mission-ready-healthcare-model-at-abu-dhabi-future-health-summit/" target="_blank" rel="noopener">UAE Vartha</a></div>
-    </div>
-  </article>
-
-</section>
-
-<section id="startups">
-  <h2>Start-ups and innovation challenges <small>4</small></h2>
-  <p class="intro">Programmes that bring founders and new solutions into Abu Dhabi's health system.</p>
-
-  <article class="item" data-type="programme">
-    <div class="date">Open now</div>
-    <div class="body">
-      <span class="org">Future Health</span>
-      <div class="head"><h3>Future Health Digital Innovation Challenge 2026</h3><span class="tag">Programme</span></div>
-      <p>Opened 15 October, ahead of the summit. AI, software and connected-device solutions across fertility, population health and wellbeing. US$105,000 in awards, with the top three presenting at GITEX, 7 to 11 December.</p>
-      <div class="src"><a href="https://hack2skill.com/event/futurehealthchallenge/" target="_blank" rel="noopener">Hack2skill</a><a href="https://futurehealthinitiative.ae/future-health-launches-global-challenge-to-move-health-innovation-towards-real-world-application/" target="_blank" rel="noopener">Future Health release</a></div>
-    </div>
-  </article>
-
-  <article class="item" data-type="programme">
-    <div class="date">21 Oct</div>
-    <div class="body">
-      <span class="org">Future Health</span>
+      <span class="theme">Start-ups &amp; challenges</span>
       <div class="head"><h3>Future Health × Bridge for Billions</h3><span class="tag">Programme</span></div>
       <p>An entrepreneurship programme for health ventures in emerging markets, with a route for them into Abu Dhabi's health ecosystem.</p>
       <div class="src"><a href="https://futurehealthinitiative.ae/future-health-and-bridge-for-billions-to-launch-programme-strengthening-health-entrepreneurship-in-emerging-markets/" target="_blank" rel="noopener">Future Health release</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="programme">
+  <article class="item" data-theme="th6" data-type="programme">
     <div class="date">20 Oct</div>
     <div class="body">
-      <span class="org">Future Health</span>
+      <span class="theme">Start-ups &amp; challenges</span>
       <div class="head"><h3>Impact Challenge documentary and second Challenge</h3><span class="tag">Programme</span></div>
       <p>Premiere of a documentary on the first Future Health Impact Challenge, and expressions of interest opened for the second.</p>
       <div class="src"><a href="https://futurehealthinitiative.ae/inaugural-future-health-impact-challenge-documentary-released-as-expressions-of-interest-open-for-second-challenge/" target="_blank" rel="noopener">Future Health release</a></div>
     </div>
   </article>
 
-  <article class="item" data-type="agreement">
+  <article class="item" data-theme="th6" data-type="programme">
+    <div class="date">Open now</div>
+    <div class="body">
+      <span class="theme">Start-ups &amp; challenges</span>
+      <div class="head"><h3>Future Health Digital Innovation Challenge 2026</h3><span class="tag">Programme</span></div>
+      <p>Opened 15 October, ahead of the summit. AI, software and connected-device solutions across fertility, population health and wellbeing. US$105,000 in awards, with the top three presenting at GITEX, 7 to 11 December.</p>
+      <div class="src"><a href="https://hack2skill.com/event/futurehealthchallenge/" target="_blank" rel="noopener">Hack2skill</a><a href="https://futurehealthinitiative.ae/future-health-launches-global-challenge-to-move-health-innovation-towards-real-world-application/" target="_blank" rel="noopener">Future Health release</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="m42">
+  <h2>M42 <small>5</small></h2>
+
+  <article class="item" data-theme="th5" data-type="launch">
+    <div class="date">22 Oct</div>
+    <div class="body">
+      <span class="theme">AI in care delivery</span>
+      <div class="head"><h3>Ossi clinical AI platform</h3><span class="tag">Launch</span></div>
+      <p>A multi-agent AI platform built with Microsoft that documents consultations, summarises records, retrieves clinical information and supports coding. Live in seven M42 facilities in the UAE and Bahrain.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-launches-ossi-an-ai-platform-transforming-clinician-patient-connections/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://en.aletihad.ae/amp/news/uae/4700552/m42-launches-ai-powered-ossi-platform-at-future-health-summi" target="_blank" rel="noopener">Aletihad</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th1" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Health data, genomics &amp; prediction</span>
+      <div class="head"><h3>M42 × Inocras</h3><span class="tag">Agreement</span></div>
+      <p>A pilot at Cleveland Clinic Abu Dhabi of blood tests that look for tumour DNA to detect cancer recurrence earlier, starting with higher-risk breast cancer patients.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-and-inocras-partner-to-advance-earlier-detection-of-cancer-recurrence-in-the-uae/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th3" data-type="agreement">
     <div class="date">21 Oct</div>
     <div class="body">
-      <span class="org">Mediclinic Middle East</span>
+      <span class="theme">Specialist care &amp; expansion</span>
+      <div class="head"><h3>M42 × Siemens Healthineers</h3><span class="tag">Agreement</span></div>
+      <p>MoU on prevention, screening and earlier detection across the Global South, with a focus on Africa.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-and-siemens-healthineers-partner-to-advance-healthcare-transformation-across-the-global-south/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://www.zawya.com/en/business/m42-siemens-healthineers-partner-to-advance-healthcare-transformation-across-global-south-1848890" target="_blank" rel="noopener">Zawya</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th3" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Specialist care &amp; expansion</span>
+      <div class="head"><h3>M42 × Re:Cognition Health</h3><span class="tag">Agreement</span></div>
+      <p>Memory and brain health services at Mubadala Health Dubai, then Tawam Molecular Imaging Centre in Al Ain. Covers cognitive impairment and Alzheimer's, including disease-modifying therapy for eligible patients, with ADHD and autism assessment added in phases. Re:Cognition's first clinical service in the region.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/mubadala-health-dubai-and-tawam-molecular-imaging-centre-partner-with-re-cognition-health-to-expand-access-to-specialist-brain-and-memory-health-services-in-uae/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th3" data-type="agreement">
+    <div class="date">20 Oct</div>
+    <div class="body">
+      <span class="theme">Specialist care &amp; expansion</span>
+      <div class="head"><h3>Mubadala Health Bahrain</h3><span class="tag">Agreement</span></div>
+      <p>Plans for a new multidisciplinary facility in Bahrain Bay, with an agreement signed with Bahrain's Future Generations Reserve Fund to secure the site.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/m42-expands-in-bahrain-with-new-mubadala-health-facility-in-bahrain-bay/" target="_blank" rel="noopener">Abu Dhabi Media Office</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="mub">
+  <h2>Mubadala Bio &amp; Mubadala <small>4</small></h2>
+
+  <article class="item" data-theme="th4" data-type="agreement">
+    <div class="date">20 Oct</div>
+    <div class="body">
+      <span class="theme">Pharma manufacturing &amp; investment</span>
+      <div class="head"><h3>Mubadala Bio × Eli Lilly</h3><span class="tag">Agreement</span></div>
+      <p>Local packaging and logistics for Lilly's GLP-1 medicines from a 125,000 sqm site in KEZAD. Phased in subject to regulatory and quality approvals. No financial terms or timeline disclosed.</p>
+      <div class="src"><a href="https://www.mediaoffice.abudhabi/en/health/mubadala-bio-and-lilly-announce-landmark-agreement-to-advance-pharmaceutical-contract-manufacturing-in-abu-dhabi/" target="_blank" rel="noopener">Abu Dhabi Media Office</a><a href="https://mena.entrepreneur.com/business-news/mubadala-bio-partners-with-us1-1-trillion-pharma-giant-eli-lilly-to-package-weight-loss-drugs-in-abu-dhabi" target="_blank" rel="noopener">Entrepreneur Middle East</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th4" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Pharma manufacturing &amp; investment</span>
+      <div class="head"><h3>Mubadala Bio × Marcyrl Group</h3><span class="tag">Agreement</span></div>
+      <p>Localisation of women's health, fertility and respiratory medicines in the UAE.</p>
+      <div class="src"><a href="https://www.healthcaremea.com/2026/10/25/mubadala-bio-partners-with-marcyrl-to-strengthen-uae-pharmaceutical-manufacturing/" target="_blank" rel="noopener">Healthcare MEA</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th4" data-type="programme">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Pharma manufacturing &amp; investment</span>
+      <div class="head"><h3>Mubadala × Khalifa University: Life Sciences Innovation Program</h3><span class="tag">Programme</span></div>
+      <p>Mubadala and Khalifa University Enterprises Company will jointly fund research projects in cardiometabolic, CNS, oncology, musculoskeletal, and men's and women's health, with Mubadala Bio supporting the route to products.</p>
+      <div class="src"><a href="https://mededgemea.com/uae-launches-life-sciences-programme-to-advance-healthcare-research-and-innovation/" target="_blank" rel="noopener">MedEdge MEA</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th4" data-type="agreement">
+    <div class="date">20 Oct</div>
+    <div class="body">
+      <span class="theme">Pharma manufacturing &amp; investment</span>
+      <div class="head"><h3>Ministry of Defence × Mubadala Bio</h3><span class="tag">Agreement</span></div>
+      <p>Sponsorship of the 46th ICMM World Congress of Military Medicine, at ADNEC from 9 to 13 November 2026.</p>
+      <div class="src"><a href="http://www.middleeaststar.com/news/279387814/ministry-of-defence-signs-agreement-with-mubadala-bio-for-military-medicine-congress" target="_blank" rel="noopener">WAM via Middle East Star</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="ind">
+  <h2>Pharma &amp; medtech <small>4</small></h2>
+
+  <article class="item" data-theme="th5" data-type="launch">
+    <div class="date">20 Oct</div>
+    <div class="body">
+      <span class="theme">AI in care delivery</span>
+      <div class="head"><h3>Johnson &amp; Johnson MedTech</h3><span class="tag">Update</span></div>
+      <p>Progress update on standardising Abu Dhabi operating rooms on its Polyphonic digital surgery platform with DoH. Announced an intent to collaborate with Hub71 on surgical start-ups, and released The Future of Digital Surgery report.</p>
+      <div class="src"><a href="https://www.biospace.com/press-releases/johnson-johnson-to-showcase-the-future-of-surgical-intelligence-at-abu-dhabi-future-health-summit-2026" target="_blank" rel="noopener">Business Wire via BioSpace</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th0" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>AstraZeneca × Oracle</h3><span class="tag">Agreement</span></div>
+      <p>An AI partnership for clinical trials and care pathways. The first programme runs in Abu Dhabi with M42 and focuses on finding patients with uncontrolled hypertension and matching eligible ones to trials.</p>
+      <div class="src"><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th0" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>Precision Neuroscience × Cleveland Clinic Abu Dhabi</h3><span class="tag">Agreement</span></div>
+      <p>Two-year MoU, supported by DoH, to evaluate Precision's Layer 7 brain-computer interface in clinical research, starting with severe paralysis from brainstem stroke, spinal cord injury or ALS. Cleveland Clinic Abu Dhabi becomes the company's first research site outside the US.</p>
+      <div class="src"><a href="https://biospace.com/press-releases/precision-neuroscience-expands-clinical-network-beyond-the-u-s-with-first-international-site-in-abu-dhabi" target="_blank" rel="noopener">BioSpace</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th4" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Pharma manufacturing &amp; investment</span>
+      <div class="head"><h3>ADCAN Pharma × MS Pharma</h3><span class="tag">Agreement</span></div>
+      <p>Local manufacturing, packaging, testing and batch release of biosimilars, injectables and oral medicines in the UAE, across oncology, immunology and other areas. ADCAN also plans a UAE laboratory for full quality testing of monoclonal antibodies.</p>
+      <div class="src"><a href="https://enterpriseam.com/uae/2026/10/22/healthcare-moves-from-summit-habib-al-mulla-goes-to-shanghai-no-rest-for-adias-india-ipo-drive-invictus-offloads-merec-stake/" target="_blank" rel="noopener">Enterprise AM</a><a href="https://gulfnews.com/uae/health/uae-to-expand-local-production-of-medicines-for-cancer-and-chronic-diseases-1.500717699" target="_blank" rel="noopener">Gulf News</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="ihlad">
+  <h2>Institute for Healthier Living Abu Dhabi <small>1</small></h2>
+
+  <article class="item" data-theme="th2" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Prevention, wearables &amp; healthy living</span>
+      <div class="head"><h3>IHLAD × UAE Integrative Medicine Council</h3><span class="tag">Agreement</span></div>
+      <p>MoU on research into the safety and effectiveness of integrative medicine, including selected Emirati traditional practices. IHLAD also ran a three-day scientific programme on healthy longevity medicine, including the existing DoH guidelines for Healthy Longevity Medicine Centres.</p>
+      <div class="src"><a href="https://mena.entrepreneur.com/business-news/ihlad-convenes-global-experts-on-healthy-longevity-medicine-at-abu-dhabi-future-health-summit-2026" target="_blank" rel="noopener">Entrepreneur Middle East</a><a href="https://zawya.com/en/press-release/companies-news/ihlad-unites-global-experts-to-advanceevidence-based-healthy-longevity-medicine-at-abu-dhabi-future-health-summit-2026-1848832" target="_blank" rel="noopener">Zawya</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="ph">
+  <h2>Abu Dhabi Stem Cells Center &amp; Yas Clinic <small>3</small></h2>
+
+  <article class="item" data-theme="th0" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>Abu Dhabi Stem Cells Center × Miltenyi</h3><span class="tag">Agreement</span></div>
+      <p>Scientific and technical cooperation on local CAR-T manufacturing. ADSCC contributes its GMP cell therapy infrastructure; Miltenyi supports with viral vector and anti-CD19 CAR technology.</p>
+      <div class="src"><a href="https://www.healthcaremea.com/2026/10/26/adscc-partners-with-miltenyi-to-advance-local-car-t-therapy-manufacturing-in-uae/" target="_blank" rel="noopener">Healthcare MEA</a><a href="https://www.voiceofemirates.com/en/emirates/2026/10/23/strengthening-research-and-technical-partnerships-the-abu-dhabi-summit-for-the-future-of-health-2026-charts-new-paths-for-international-health-cooperation/" target="_blank" rel="noopener">WAM summary</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th0" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>Yas Clinic Khalifa City × Reem Hospital</h3><span class="tag">Agreement</span></div>
+      <p>MoU on orthopaedics, neuroscience and dermatology, with a focus on regenerative medicine and cell therapy. Covers knowledge exchange, joint case reviews, training and coordinated patient pathways, with any cell therapy work subject to regulatory approval.</p>
+      <div class="src"><a href="https://www.dubaistandard.com/reem-hospital-and-yas-clinic-partner-to-advance-regenerative-medicine-in-abu-dhabi/" target="_blank" rel="noopener">Dubai Standard</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th0" data-type="launch">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>Yas Clinic Khalifa City × ADSCC: CRISPR gene therapy</h3><span class="tag">Launch</span></div>
+      <p>Yas Clinic Khalifa City announced that CRISPR-Cas9 gene-editing therapy is available at the clinic, in collaboration with Abu Dhabi Stem Cells Center.</p>
+      <div class="src"><a href="https://gulfnews.com/uae/health/abu-dhabi-gathers-global-leaders-to-shape-the-future-of-healthcare-2-1.500718085" target="_blank" rel="noopener">Gulf News</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="burjeel">
+  <h2>Burjeel Holdings <small>3</small></h2>
+
+  <article class="item" data-theme="th5" data-type="launch">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">AI in care delivery</span>
+      <div class="head"><h3>Mission-ready healthcare model</h3><span class="tag">Launch</span></div>
+      <p>An emergency and acute care network linking field trauma care, air evacuation, AI diagnostics and tertiary care, run through its BEACON operations network and group companies.</p>
+      <div class="src"><a href="https://english.uaevartha.com/burjeel-holdings-unveils-mission-ready-healthcare-model-at-abu-dhabi-future-health-summit/" target="_blank" rel="noopener">UAE Vartha</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th0" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Clinical trials &amp; new therapies</span>
+      <div class="head"><h3>Oncology, AI and research partnerships</h3><span class="tag">Agreement</span></div>
+      <p>Avatrial and Avesta Bio on oncology trials and therapies; HealthStay on an AI system for referrals and international patient intake at Burjeel Medical City; plus agreements with South Korea's ARPI and NYU Abu Dhabi.</p>
+      <div class="src"><a href="https://english.uaevartha.com/burjeel-holdings-unveils-mission-ready-healthcare-model-at-abu-dhabi-future-health-summit/" target="_blank" rel="noopener">UAE Vartha</a><a href="https://fastcompanyme.com/news/the-future-of-medicine-is-already-here-these-are-the-breakthroughs-shaping-what-comes-next/" target="_blank" rel="noopener">Fast Company Middle East</a></div>
+    </div>
+  </article>
+
+  <article class="item" data-theme="th3" data-type="agreement">
+    <div class="date">Summit</div>
+    <div class="body">
+      <span class="theme">Specialist care &amp; expansion</span>
+      <div class="head"><h3>Burjeel × e&amp;</h3><span class="tag">Agreement</span></div>
+      <p>MoU giving e&amp; employees and their families priority access to specialist care and preventive health programmes across Burjeel's network.</p>
+      <div class="src"><a href="https://www.zawya.com/en/press-release/companies-news/burjeel-holdings-and-etisalat-join-hands-to-enhance-healthcare-access-for-employees-and-families-across-uae-1817275" target="_blank" rel="noopener">Zawya</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="mediclinic">
+  <h2>Mediclinic Middle East <small>2</small></h2>
+
+  <article class="item" data-theme="th6" data-type="agreement">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">Start-ups &amp; challenges</span>
       <div class="head"><h3>Mediclinic Middle East × Hub71+ Life Sciences</h3><span class="tag">Agreement</span></div>
       <p>MoU connecting Mediclinic's clinical network with Hub71's health-tech start-ups. Mediclinic offers clinical guidance, mentorship and a route for promising products to be evaluated in clinical settings, in areas including cancer care, fertility, musculoskeletal, chronic disease, women's health and virtual care.</p>
       <div class="src"><a href="https://www.healthcaremea.com/2026/10/26/mediclinic-middle-east-partners-with-hub71-to-support-healthtech-startups-in-abu-dhabi/" target="_blank" rel="noopener">Healthcare MEA</a><a href="https://businessnewse.com/2026/10/21/mediclinic-middle-east-joins-hub71-lifesciences-to-advance-healthcare-innovation-in-abu-dhabi/" target="_blank" rel="noopener">Business News E</a></div>
     </div>
   </article>
 
+  <article class="item" data-theme="th5" data-type="launch">
+    <div class="date">21 Oct</div>
+    <div class="body">
+      <span class="theme">AI in care delivery</span>
+      <div class="head"><h3>Mediclinic Middle East × Commure</h3><span class="tag">Update</span></div>
+      <p>Ambient AI that turns clinician and patient conversations into structured notes for doctors to review, in English and Arabic. Being introduced at Mediclinic Parkview and Mediclinic City Hospital in Dubai, building on a project with more than 60 doctors.</p>
+      <div class="src"><a href="https://www.healthcaremea.com/2026/10/26/mediclinic-middle-east-partners-with-commure-to-advance-ambient-ai-in-uae-clinical-care/" target="_blank" rel="noopener">Healthcare MEA</a><a href="https://www.tahawultech.com/channel/mediclinic-middle-east-and-commure-collaborate-to-advance-ai-enabled-clinical-care-in-the-uae/" target="_blank" rel="noopener">Tahawul Tech</a></div>
+    </div>
+  </article>
 </section>
 
 <section id="after">
   <h2>After the summit <small>1</small></h2>
-  <p class="intro">Announced after the summit closed, and not counted in the 40.</p>
 
   <article class="item" data-type="launch">
     <div class="date">28 Oct</div>
     <div class="body">
-      <span class="org">M42</span>
       <div class="head"><h3>M42's IROS × Mammoth Biosciences: UAE's first gene-editing trial</h3><span class="tag">Launch</span></div>
       <p>A clinical trial of MB-111, a one-off infusion that uses Mammoth's compact CRISPR system to switch off the APOC3 gene in the liver. It targets persistent chylomicronemia, a condition of very high blood triglycerides that can cause recurrent pancreatitis. Overseen by DoH, and builds on a June 2026 agreement between DoH, M42 and Mammoth.</p>
       <div class="src"><a href="https://www.wam.ae/en/article/c2yy60j-iros-mammoth-biosciences-conduct-uae%E2%80%99s-first-trial" target="_blank" rel="noopener">WAM</a><a href="https://en.aletihad.ae/news/uae/4701940/iros--mammoth-biosciences-to-conduct-uae-s-first-trial-of-ge" target="_blank" rel="noopener">Aletihad</a></div>
     </div>
   </article>
-
 </section>
 
 <p class="empty" id="none" hidden>Nothing matches. Try a different word, or clear the filters.</p>
@@ -659,7 +664,8 @@ html{scroll-behavior:smooth}
   var count=document.getElementById('count');
   var none=document.getElementById('none');
   var clear=document.getElementById('clear');
-  var state={type:'all',kw:null,text:''};
+  var state={type:'all',kw:null,text:'',th:'all'};
+  var thChips=[].slice.call(document.querySelectorAll('.chip.th'));
   function norm(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
   items.forEach(function(it){
     var t=it.querySelector('.head').textContent+' '+it.querySelector('.body').textContent;
@@ -683,19 +689,22 @@ html{scroll-behavior:smooth}
     items.forEach(function(it){
       var ok=(state.type==='all'||it.getAttribute('data-type')===state.type)
         &&(!state.kw||it._kw.indexOf(state.kw)>-1)
+        &&(state.th==='all'||it.getAttribute('data-theme')===state.th)
         &&terms.every(function(w){return it._text.indexOf(w)>-1;});
       it.hidden=!ok; if(ok) shown++;
     });
     sections.forEach(function(s){s.hidden=!s.querySelector('.item:not([hidden])');});
     typeChips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-f')===state.type));});
     kwChips.forEach(function(c){c.setAttribute('aria-pressed',String(c._k===state.kw));});
+    thChips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-th')===state.th));});
     count.textContent=shown+(shown===1?' item':' items');
     none.hidden=shown>0;
-    clear.hidden=state.type==='all'&&!state.kw&&!terms.length;
+    clear.hidden=state.type==='all'&&!state.kw&&!terms.length&&state.th==='all';
   }
   typeChips.forEach(function(c){c.addEventListener('click',function(){state.type=c.getAttribute('data-f');apply();});});
+  thChips.forEach(function(c){c.addEventListener('click',function(){state.th=c.getAttribute('data-th');apply();});});
   q.addEventListener('input',function(){state.text=q.value;apply();});
-  clear.addEventListener('click',function(){state={type:'all',kw:null,text:''};q.value='';apply();q.focus();});
+  clear.addEventListener('click',function(){state={type:'all',kw:null,text:'',th:'all'};q.value='';apply();q.focus();});
   apply();
 })();
 </script>
